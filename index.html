@@ -373,7 +373,64 @@ details.faq p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.6}
 .avatar{overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:760px){.profil-kiri,.profil-kanan{grid-column:1/-1}}
-@media (max-width:600px){.profil-grid{padding-bottom:150px}}
+@media (max-width:600px){#main{padding-bottom:150px}}
+/* ---------- Daftar siswa admin, siswa teraktif, dan peringkat kelas (gaya podium) ---------- */
+.ds-seg{display:flex;padding:4px;margin-top:12px;background:var(--pink-100);border-radius:999px}
+.ds-seg-btn{flex:1;padding:9px 8px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.ds-seg-btn.on{background:#fff;color:var(--ink);box-shadow:0 4px 10px -6px rgba(74,31,52,.5)}
+.ds-chip-row{display:flex;gap:8px;margin-top:12px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:2px 0 4px}
+.ds-chip-row::-webkit-scrollbar{display:none}
+.ds-chip{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--pink-200);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.ds-chip.on{background:var(--pink-600);border-color:var(--pink-600);color:#fff}
+.ds-chip.kosong:not(.on){opacity:.55}
+.ds-chip-n{min-width:22px;padding:1px 6px;border-radius:999px;background:var(--pink-100);color:#a8305f;font-size:11px;text-align:center}
+.ds-chip.on .ds-chip-n{background:rgba(255,255,255,.25);color:#fff}
+.ds-cari{width:100%;box-sizing:border-box;height:44px;margin-top:14px;padding:0 14px;border:1px solid var(--pink-200);border-radius:14px;background:#fff;color:var(--ink);font:inherit;font-size:14px}
+.ds-ringkas{margin:14px 0 0}
+.ds-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.ds-kartu{min-width:0;padding:10px 10px 12px;background:#fff;border:1px solid var(--pink-200);border-radius:18px}
+.ds-kartu small{display:block;font-size:12px;overflow-wrap:anywhere}
+.ds-foto{position:relative;display:grid;place-items:center;aspect-ratio:1/1;border-radius:12px;background:var(--pink-100);overflow:hidden;color:var(--pink-600)}
+.ds-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.ds-foto .ico{width:54px;height:54px}
+.ds-tag{position:absolute;top:8px;right:8px;padding:3px 8px;border-radius:999px;background:#fff;color:var(--ink);font-size:11px;font-weight:700;box-shadow:0 4px 10px -6px rgba(74,31,52,.5)}
+.ds-nama{display:block;margin-top:10px;font-size:14px;font-weight:800;overflow-wrap:anywhere}
+.ds-baris{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:10px}
+.ds-poin{padding:4px 9px;border-radius:999px;background:var(--pink-100);color:#a8305f;font-size:12px;font-weight:700;white-space:nowrap}
+.ds-titik{display:flex;gap:4px}
+.ds-titik i{width:12px;height:12px;border-radius:50%;border:1.5px dashed #d9b8c6;box-sizing:border-box}
+.ds-titik i.on{background:var(--pink-600);border:0}
+.ta-pilih{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13px;font-weight:700;color:var(--ink)}
+.ta-pilih select{padding:8px 10px;border:1px solid var(--pink-200);border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-size:13px}
+.pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:end;margin-top:22px}
+.pod-kosong{min-width:0}
+.pod-kolom{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.pod-lingkaran{width:62px;height:62px;box-sizing:border-box;border-radius:50%;border:3px solid #fff;background:var(--pink-100);display:grid;place-items:center;overflow:hidden;color:var(--pink-600);font-size:14px;font-weight:800;box-shadow:0 8px 16px -10px rgba(74,31,52,.5)}
+.pod-lingkaran img{width:100%;height:100%;object-fit:cover;display:block}
+.pod-lingkaran .ico{width:26px;height:26px}
+.pod-kode{color:#a8305f}
+.pod-juara-1 .pod-lingkaran{width:74px;height:74px;border-color:var(--pink-600)}
+.pod-juara-1 .pod-lingkaran .ico{width:30px;height:30px}
+.pod-judul{margin-top:8px;font-size:13px;font-weight:800;line-height:1.3;overflow-wrap:anywhere}
+.pod-poin{font-size:12px;color:#a8305f;font-weight:700}
+.pod-tag{margin-top:6px;padding:3px 9px;border-radius:999px;background:var(--pink-600);color:#fff;font-size:11px;font-weight:700}
+.pod-tiang{width:100%;box-sizing:border-box;margin-top:10px;border-radius:14px 14px 0 0;display:grid;place-items:center;font-weight:800}
+.pod-juara-1 .pod-tiang{height:112px;background:var(--pink-600);color:#fff;font-size:30px}
+.pod-juara-2 .pod-tiang{height:84px;background:var(--pink-200);color:#a8305f;font-size:26px}
+.pod-juara-3 .pod-tiang{height:64px;background:#fbe3ee;color:var(--ink);font-size:24px}
+.pod-list{margin-top:18px;background:#fff;border:1px solid var(--pink-200);border-radius:18px;overflow:hidden}
+.pod-baris{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--pink-100)}
+.pod-baris:first-child{border-top:0}
+.pod-baris.saya{background:var(--pink-50)}
+.pod-no{flex:none;width:22px;text-align:center;font-size:14px;color:var(--muted);font-weight:700}
+.pod-info{flex:1;min-width:0}
+.pod-atas{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:14px}
+.pod-atas b{min-width:0;overflow-wrap:anywhere}
+.pod-skor{flex:none;color:var(--pink-600);white-space:nowrap}
+.pod-skor small{color:var(--muted);font-weight:600;font-size:11px}
+.pod-bilah{margin-top:8px;height:6px;border-radius:999px;background:var(--pink-100);overflow:hidden}
+.pod-bilah span{display:block;height:100%;background:var(--pink-600)}
+.pod-catatan{margin:14px 2px 0;font-size:12px;line-height:1.5}
 /* ---------- Atur foto profil (potong dan geser) ---------- */
 .potong-latar{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;box-sizing:border-box;background:rgba(74,31,52,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .potong-kotak{width:min(100%,380px);box-sizing:border-box;background:#fff;border-radius:24px;padding:20px;box-shadow:0 30px 60px -28px rgba(74,31,52,.6);text-align:center}
@@ -727,7 +784,7 @@ async function pagePoin() {
     </div>
     <div class="card span-12 anim-in">
       <div class="card-head"><div class="ic">${ikon('trophy')} </div><h3>Peringkat Kelas</h3></div>
-      ${d.papan.length ? d.papan.map((p, i) => rankRow(p, i, d.kelas)).join('') : '<p class="muted">Belum ada data poin.</p>'}
+      ${peringkatKelasHtml(d)}
     </div>
   </div>`;
 }
@@ -2165,7 +2222,7 @@ const KEY_TOKEN = 'laporbantu_token';
 /* Halaman yang sudah aktif per peran */
 const AKTIF = {
   siswa: ['beranda', 'lapor', 'laporan', 'peta', 'poin', 'notif', 'profil', 'bantuan', 'info', 'pengaturan'],
-  admin: ['beranda', 'masuk', 'proses', 'riwayat', 'cetak', 'statistik', 'verifikator', 'pengumuman', 'info', 'pengaturan']
+  admin: ['beranda', 'masuk', 'proses', 'riwayat', 'cetak', 'statistik', 'siswa', 'teraktif', 'verifikator', 'pengumuman', 'info', 'pengaturan']
 };
 const SUB = {
   beranda: 'Ringkasan akun dan aktivitasmu.',
@@ -2184,6 +2241,8 @@ const SUB = {
   verifikator: 'Pihak yang menangani laporan di lapangan.',
   pengumuman: 'Informasi yang dikirim ke seluruh siswa.',
   info: 'Tentang LaporBantu Smadita dan tim pengembangnya.',
+  siswa: 'Siswa yang sudah mendaftar akun, per tingkat dan kelas.',
+  teraktif: 'Siswa dengan poin tertinggi di sekolah.',
   pengaturan: 'Kelola keamanan akunmu.'
 };
 
@@ -2195,7 +2254,7 @@ const HALAMAN = {
   },
   admin: {
     beranda: pageBerandaAdmin, masuk: pageMasuk, proses: pageProses, riwayat: pageRiwayat, cetak: pageCetak,
-    statistik: pageStatistik, verifikator: pageVerifikator, pengumuman: pagePengumuman, info: pageInfo, pengaturan: pagePengaturan
+    statistik: pageStatistik, verifikator: pageVerifikator, pengumuman: pagePengumuman, siswa: pageDaftarSiswa, teraktif: pageSiswaTeraktif, info: pageInfo, pengaturan: pagePengaturan
   }
 };
 
@@ -2219,6 +2278,8 @@ const MENU = {
     { id: 'riwayat', ic: 'check', t: 'Riwayat Selesai' },
     { id: 'cetak', ic: 'printer', t: 'Cetak Laporan' },
     { id: 'statistik', ic: 'chart', t: 'Statistik Sekolah' },
+    { id: 'siswa', ic: 'graduation', t: 'Daftar Siswa' },
+    { id: 'teraktif', ic: 'trophy', t: 'Siswa Teraktif' },
     { id: 'verifikator', ic: 'users', t: 'Verifikator' },
     { id: 'pengumuman', ic: 'megaphone', t: 'Pengumuman' },
     { id: 'info', ic: 'info', t: 'Info Aplikasi' },
@@ -2856,6 +2917,231 @@ document.addEventListener('change', async e => {
     toast(err.message, 'err');
     if (tombol) tombol.disabled = false;
   }
+});
+
+/* ---------- Peringkat kelas dengan podium (siswa dan admin) ---------- */
+/* Satu baris peringkat di bawah podium */
+function barisPeringkat(b) {
+  return `
+  <div class="pod-baris${b.saya ? ' saya' : ''}">
+    <b class="pod-no">${b.no}</b>
+    <div class="pod-info">
+      <div class="pod-atas"><b>${esc(b.judul)}</b><b class="pod-skor">${b.poin} <small>poin</small></b></div>
+      <small class="muted">${esc(b.sub)}</small>
+      <div class="pod-bilah" role="presentation"><span style="width:${b.lebar}%"></span></div>
+    </div>
+  </div>`;
+}
+
+/* Podium tiga teratas: juara 1 di tengah, juara 2 di kiri, juara 3 di kanan. items boleh kurang dari tiga. */
+function podiumHtml(items) {
+  const susunan = [[items[1], 2], [items[0], 1], [items[2], 3]];
+  return `<div class="pod">${susunan.map(([it, no]) => kolomPodium(it, no)).join('')}</div>`;
+}
+
+function kolomPodium(it, no) {
+  if (!it) return '<div class="pod-kosong" aria-hidden="true"></div>';
+  const lingkaran = it.kode
+    ? `<span class="pod-lingkaran pod-kode">${esc(it.kode)}</span>`
+    : `<span class="pod-lingkaran">${it.foto ? `<img src="${esc(it.foto)}" alt="">` : ikon('user')}</span>`;
+  return `
+  <div class="pod-kolom pod-juara-${no}">
+    ${lingkaran}
+    <b class="pod-judul">${esc(it.judul)}</b>
+    <small class="muted">${esc(it.sub)}</small>
+    <small class="pod-poin">${it.poin} poin</small>
+    ${it.tag ? `<span class="pod-tag">${esc(it.tag)}</span>` : ''}
+    <div class="pod-tiang"><span class="sr-only">Peringkat </span>${no}</div>
+  </div>`;
+}
+
+/* Peringkat kelas di halaman Poin & Peringkat siswa */
+function peringkatKelasHtml(d) {
+  const papan = d.papan || [];
+  if (!papan.length) return '<p class="muted">Belum ada data poin.</p>';
+  const teratas = papan[0].poin;
+  const saya = papan.find(p => p.kelas === d.kelas);
+  const selisih = saya ? teratas - saya.poin : 0;
+  const ringkas = saya
+    ? `Kelasmu ${esc(d.kelas)} ada di peringkat ${d.rankKelas} dari ${papan.length} kelas.` +
+      (selisih > 0 ? ` Selisihnya ${selisih} poin dari kelas teratas.` : ' Kelasmu ada di puncak.')
+    : '';
+  const juara = papan.slice(0, 3).map(p => ({
+    kode: p.kelas, judul: 'Kelas ' + p.kelas, sub: p.siswa + ' siswa', poin: p.poin,
+    tag: p.kelas === d.kelas ? 'Kelasmu' : ''
+  }));
+  const sisa = papan.slice(3).map((p, i) => barisPeringkat({
+    no: i + 4, judul: 'Kelas ' + p.kelas,
+    sub: p.siswa + ' siswa' + (p.kelas === d.kelas ? ' · kelasmu' : ''),
+    poin: p.poin, lebar: teratas ? Math.round(p.poin / teratas * 100) : 0,
+    saya: p.kelas === d.kelas
+  })).join('');
+  return `
+  ${ringkas ? `<p class="muted">${ringkas}</p>` : ''}
+  ${podiumHtml(juara)}
+  ${sisa ? `<div class="pod-list">${sisa}</div>` : ''}
+  <p class="muted pod-catatan">Poin kelas adalah total poin seluruh siswa di kelas.</p>`;
+}
+
+/* ---------- Admin: daftar siswa yang sudah mendaftar dan siswa teraktif ---------- */
+let DATA_SISWA = null; // hasil dataSiswaAdmin terakhir
+const DS = { tingkat: 'semua', kelas: 'semua', cari: '' };
+const TA = { mode: 'semua', kelas: '' };
+const TINGKAT_DS = [['semua', 'Semua'], ['X', 'Kelas X'], ['XI', 'Kelas XI'], ['XII', 'Kelas XII']];
+
+function tingkatDari(kelas) { return String(kelas || '').split('-')[0]; }
+
+function tglPendek(iso) {
+  const t = new Date(iso);
+  return isNaN(t) ? '' : t.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+}
+
+function dsKontrolHtml() {
+  const daftarKelas = CFG.kelas.filter(k => DS.tingkat === 'semua' || tingkatDari(k) === DS.tingkat);
+  const totalTingkat = DATA_SISWA.siswa.filter(s => DS.tingkat === 'semua' || tingkatDari(s.kelas) === DS.tingkat).length;
+  const labelSemua = DS.tingkat === 'semua' ? 'Semua' : 'Semua ' + DS.tingkat;
+  return `
+  <div class="ds-seg" role="group" aria-label="Tingkat kelas">
+    ${TINGKAT_DS.map(([id, t]) => `<button type="button" class="ds-seg-btn${DS.tingkat === id ? ' on' : ''}" aria-pressed="${DS.tingkat === id}" data-ds-tingkat="${id}">${t}</button>`).join('')}
+  </div>
+  <div class="ds-chip-row" role="group" aria-label="Pilih kelas">
+    <button type="button" class="ds-chip${DS.kelas === 'semua' ? ' on' : ''}" aria-pressed="${DS.kelas === 'semua'}" data-ds-kelas="semua">${labelSemua}<span class="ds-chip-n">${totalTingkat}</span></button>
+    ${daftarKelas.map(k => {
+      const n = DATA_SISWA.perKelas[k] || 0;
+      const on = DS.kelas === k;
+      return `<button type="button" class="ds-chip${on ? ' on' : ''}${n === 0 ? ' kosong' : ''}" aria-pressed="${on}" data-ds-kelas="${esc(k)}">${esc(k)}<span class="ds-chip-n">${n}</span></button>`;
+    }).join('')}
+  </div>`;
+}
+
+function dsSaring() {
+  const q = DS.cari.toLowerCase();
+  return DATA_SISWA.siswa
+    .filter(s => (DS.tingkat === 'semua' || tingkatDari(s.kelas) === DS.tingkat)
+      && (DS.kelas === 'semua' || s.kelas === DS.kelas)
+      && (!q || s.nama.toLowerCase().includes(q) || s.username.toLowerCase().includes(q)))
+    .sort((a, b) => String(b.daftar).localeCompare(String(a.daftar)));
+}
+
+function kartuSiswaHtml(s) {
+  const titik = [0, 1, 2].map(i => `<i class="${i < s.lencana ? 'on' : ''}"></i>`).join('');
+  return `
+  <article class="ds-kartu">
+    <div class="ds-foto">
+      ${s.fotoUrl ? `<img src="${esc(s.fotoUrl)}" alt="Foto ${esc(s.nama)}" loading="lazy">` : ikon('user')}
+      ${s.daftar ? `<span class="ds-tag">Daftar ${esc(tglPendek(s.daftar))}</span>` : ''}
+    </div>
+    <b class="ds-nama">${esc(s.nama)}</b>
+    <small class="muted">Kelas ${esc(s.kelas)} · @${esc(s.username)}</small>
+    <div class="ds-baris">
+      <span class="ds-poin">${s.poin} poin</span>
+      <span class="ds-titik" role="img" aria-label="${s.lencana} dari 3 lencana diraih">${titik}</span>
+    </div>
+  </article>`;
+}
+
+function dsHasilHtml() {
+  const list = dsSaring();
+  const ket = DS.kelas !== 'semua' ? 'kelas ' + DS.kelas : DS.tingkat !== 'semua' ? 'kelas ' + DS.tingkat : '';
+  const ringkas = `<p class="muted ds-ringkas">${list.length} siswa${ket ? ' ' + esc(ket) : ''} sudah mendaftar${DS.cari ? ` · cocok dengan "${esc(DS.cari)}"` : ''}</p>`;
+  if (!list.length) return ringkas + '<p class="muted">Belum ada siswa yang cocok dengan pilihan ini.</p>';
+  return ringkas + `<div class="ds-grid">${list.map(kartuSiswaHtml).join('')}</div>`;
+}
+
+async function pageDaftarSiswa() {
+  DATA_SISWA = await panggil('dataSiswaAdmin', S.token);
+  return `
+  <div class="grid">
+    <div class="card span-12 anim-in">
+      <div class="card-head"><div class="ic">${ikon('graduation')} </div><h3>Siswa yang Sudah Mendaftar</h3></div>
+      <p class="muted">Pilih tingkat, lalu kelas. Angka di setiap kelas adalah jumlah siswa yang sudah mendaftar.</p>
+      <label class="sr-only" for="dsCari">Cari siswa</label>
+      <input id="dsCari" type="search" class="ds-cari" placeholder="Cari nama atau username" value="${esc(DS.cari)}" autocomplete="off">
+      <div id="dsKontrol">${dsKontrolHtml()}</div>
+      <div id="dsHasil">${dsHasilHtml()}</div>
+    </div>
+  </div>`;
+}
+
+function taIsiHtml() {
+  const d = DATA_SISWA;
+  let pilihan = '';
+  if (TA.mode === 'kelas') {
+    const ada = CFG.kelas.filter(k => d.perKelas[k] > 0);
+    if (!ada.includes(TA.kelas)) TA.kelas = ada[0] || '';
+    pilihan = `
+    <label class="ta-pilih">Kelas
+      <select id="taKelas">${ada.map(k => `<option value="${esc(k)}"${k === TA.kelas ? ' selected' : ''}>${esc(k)} (${d.perKelas[k]} siswa)</option>`).join('')}</select>
+    </label>`;
+  }
+  const list = d.siswa
+    .filter(s => TA.mode === 'semua' || s.kelas === TA.kelas)
+    .sort((a, b) => b.poin - a.poin || a.nama.localeCompare(b.nama));
+  if (!list.length) return pilihan + '<p class="muted">Belum ada siswa terdaftar di pilihan ini.</p>';
+  const teratas = list[0].poin;
+  const juara = list.slice(0, 3).map(s => ({ foto: s.fotoUrl, judul: s.nama, sub: 'Kelas ' + s.kelas, poin: s.poin }));
+  const sisa = list.slice(3, 10).map((s, i) => barisPeringkat({
+    no: i + 4, judul: s.nama, sub: 'Kelas ' + s.kelas, poin: s.poin,
+    lebar: teratas ? Math.round(s.poin / teratas * 100) : 0, saya: false
+  })).join('');
+  return pilihan + podiumHtml(juara) + (sisa ? `<div class="pod-list">${sisa}</div>` : '') +
+    `<p class="muted pod-catatan">Menampilkan ${Math.min(10, list.length)} dari ${list.length} siswa.</p>`;
+}
+
+function taWadahHtml() {
+  return `
+  <div class="ds-seg" role="group" aria-label="Tampilan daftar">
+    <button type="button" class="ds-seg-btn${TA.mode === 'semua' ? ' on' : ''}" aria-pressed="${TA.mode === 'semua'}" data-ta-mode="semua">Semua kelas</button>
+    <button type="button" class="ds-seg-btn${TA.mode === 'kelas' ? ' on' : ''}" aria-pressed="${TA.mode === 'kelas'}" data-ta-mode="kelas">Per kelas</button>
+  </div>
+  ${taIsiHtml()}`;
+}
+
+async function pageSiswaTeraktif() {
+  DATA_SISWA = await panggil('dataSiswaAdmin', S.token);
+  return `
+  <div class="grid">
+    <div class="card span-12 anim-in">
+      <div class="card-head"><div class="ic">${ikon('trophy')} </div><h3>Siswa Teraktif</h3></div>
+      <p class="muted">Diurutkan berdasarkan total poin. Tiga teratas tampil di podium, sisanya di daftar.</p>
+      <div id="taWadah">${taWadahHtml()}</div>
+    </div>
+  </div>`;
+}
+
+function dsRender() {
+  if (!DATA_SISWA) return;
+  const k = document.getElementById('dsKontrol');
+  if (k) k.innerHTML = dsKontrolHtml();
+  const h = document.getElementById('dsHasil');
+  if (h) h.innerHTML = dsHasilHtml();
+}
+
+function taRender() {
+  const w = document.getElementById('taWadah');
+  if (w) w.innerHTML = taWadahHtml();
+}
+
+document.addEventListener('click', e => {
+  if (!DATA_SISWA) return;
+  const t = e.target.closest('[data-ds-tingkat],[data-ds-kelas],[data-ta-mode]');
+  if (!t) return;
+  if (t.dataset.dsTingkat !== undefined) { DS.tingkat = t.dataset.dsTingkat; DS.kelas = 'semua'; dsRender(); }
+  else if (t.dataset.dsKelas !== undefined) { DS.kelas = t.dataset.dsKelas; dsRender(); }
+  else if (t.dataset.taMode !== undefined) { TA.mode = t.dataset.taMode; taRender(); }
+});
+
+document.addEventListener('input', e => {
+  if (!DATA_SISWA || e.target.id !== 'dsCari') return;
+  DS.cari = e.target.value.trim();
+  const h = document.getElementById('dsHasil');
+  if (h) h.innerHTML = dsHasilHtml();
+});
+
+document.addEventListener('change', e => {
+  if (!DATA_SISWA || e.target.id !== 'taKelas') return;
+  TA.kelas = e.target.value;
+  taRender();
 });
 
 /* ---------- Start ---------- */
