@@ -374,6 +374,18 @@ details.faq p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.6}
 .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:760px){.profil-kiri,.profil-kanan{grid-column:1/-1}}
 @media (max-width:600px){.profil-grid{padding-bottom:150px}}
+/* ---------- Atur foto profil (potong dan geser) ---------- */
+.potong-latar{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;box-sizing:border-box;background:rgba(74,31,52,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.potong-kotak{width:min(100%,380px);box-sizing:border-box;background:#fff;border-radius:24px;padding:20px;box-shadow:0 30px 60px -28px rgba(74,31,52,.6);text-align:center}
+.potong-kotak h3{margin:0;font-size:18px;font-weight:800}
+.potong-kotak>p{margin:4px 0 14px;font-size:13px;color:var(--muted);line-height:1.5}
+.potong-area{position:relative;width:100%;aspect-ratio:1;overflow:hidden;border-radius:16px;background:var(--pink-100);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.potong-area.geser{cursor:grabbing}
+.potong-area img{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;pointer-events:none;-webkit-user-drag:none}
+.potong-area::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.9);pointer-events:none}
+.potong-zoom{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13px;font-weight:700;color:var(--ink)}
+.potong-zoom input{flex:1;accent-color:var(--pink-600)}
+.potong-aksi{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
 @media (prefers-reduced-motion:reduce){.medali.on,.medali.on::after{animation:none}}
 </style>
 
@@ -2668,15 +2680,173 @@ function animasiAngka(akar = document) {
 document.addEventListener('click', e => {
   if (e.target.closest('[data-ganti-foto]')) $('#fotoProfil').click();
 });
+/* Atur foto profil: foto dipotong persegi sesuai bingkai, lalu bisa digeser dan diperbesar.
+ * Mengembalikan data URL JPEG persegi, atau null jika dibatalkan. */
+const UKURAN_FOTO_PROFIL = 800; // sisi hasil akhir, dalam px
+const ZOOM_FOTO_MAKS = 3;
+
+function bukaAturFoto(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Foto tidak bisa dibaca. Pilih file gambar lain.'));
+    };
+    img.onload = () => {
+      const nw = img.naturalWidth, nh = img.naturalHeight;
+      if (!nw || !nh) {
+        URL.revokeObjectURL(url);
+        reject(new Error('Foto tidak bisa dibaca. Pilih file gambar lain.'));
+        return;
+      }
+
+      const latar = document.createElement('div');
+      latar.className = 'potong-latar';
+      latar.innerHTML = `
+        <div class="potong-kotak" role="dialog" aria-modal="true" aria-labelledby="potongJudul">
+          <h3 id="potongJudul">Atur foto profil</h3>
+          <p>Geser foto untuk memilih bagian yang ditampilkan. Gunakan penggeser, cubit, atau gulir untuk memperbesar.</p>
+          <div class="potong-area"></div>
+          <label class="potong-zoom">Perbesar
+            <input type="range" min="1" max="${ZOOM_FOTO_MAKS}" step="0.01" value="1" aria-label="Perbesar foto">
+          </label>
+          <div class="potong-aksi">
+            <button type="button" class="btn ghost sm" data-batal-foto>Batal</button>
+            <button type="button" class="btn sm" data-simpan-foto>Simpan</button>
+          </div>
+        </div>`;
+      const area = latar.querySelector('.potong-area');
+      const geser = latar.querySelector('input[type="range"]');
+      img.alt = '';
+      img.draggable = false;
+      area.appendChild(img);
+      document.body.appendChild(latar);
+
+      const F = area.clientWidth || 300;        // sisi bingkai, dalam px layar
+      const dasar = Math.max(F / nw, F / nh);   // skala agar foto menutupi seluruh bingkai
+      let skala = dasar, x = 0, y = 0;
+      img.style.width = nw + 'px';
+      img.style.height = nh + 'px';
+
+      // Foto selalu menutupi bingkai, jadi tidak ada bagian kosong
+      const batasi = () => {
+        x = Math.min(0, Math.max(F - nw * skala, x));
+        y = Math.min(0, Math.max(F - nh * skala, y));
+      };
+      const terapkan = () => {
+        img.style.transform = `translate(${x}px, ${y}px) scale(${skala})`;
+      };
+      // Mengubah skala dengan titik (px, py) tetap di tempatnya; default: tengah bingkai
+      const aturZoom = (baru, px = F / 2, py = F / 2) => {
+        const lama = skala;
+        skala = Math.min(dasar * ZOOM_FOTO_MAKS, Math.max(dasar, baru));
+        x = px - ((px - x) / lama) * skala;
+        y = py - ((py - y) / lama) * skala;
+        batasi();
+        terapkan();
+        geser.value = (skala / dasar).toFixed(2);
+      };
+
+      // Posisi awal: foto lebar di tengah; foto tinggi (potret HP) dimulai dari atas agar kepala tidak terpotong
+      x = (F - nw * skala) / 2;
+      y = (F - nh * skala) * 0.1;
+      batasi();
+      terapkan();
+
+      // Geser dengan mouse atau satu jari; cubit dengan dua jari untuk memperbesar
+      const titik = new Map();
+      let seret = null, jarakAwal = 0, skalaAwal = dasar;
+      area.addEventListener('pointerdown', e => {
+        area.setPointerCapture(e.pointerId);
+        titik.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        area.classList.add('geser');
+        if (titik.size === 1) seret = { x: e.clientX, y: e.clientY, ox: x, oy: y };
+        if (titik.size === 2) {
+          const [a, b] = [...titik.values()];
+          jarakAwal = Math.hypot(a.x - b.x, a.y - b.y);
+          skalaAwal = skala;
+        }
+      });
+      area.addEventListener('pointermove', e => {
+        if (!titik.has(e.pointerId)) return;
+        titik.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (titik.size >= 2 && jarakAwal > 0) {
+          const [a, b] = [...titik.values()];
+          const rect = area.getBoundingClientRect();
+          const jarak = Math.hypot(a.x - b.x, a.y - b.y);
+          aturZoom(skalaAwal * jarak / jarakAwal,
+            (a.x + b.x) / 2 - rect.left, (a.y + b.y) / 2 - rect.top);
+        } else if (seret && titik.size === 1) {
+          x = seret.ox + (e.clientX - seret.x);
+          y = seret.oy + (e.clientY - seret.y);
+          batasi();
+          terapkan();
+        }
+      });
+      const lepas = e => {
+        titik.delete(e.pointerId);
+        if (titik.size === 0) {
+          seret = null;
+          area.classList.remove('geser');
+        } else if (titik.size === 1) {
+          const [p] = titik.values();
+          seret = { x: p.x, y: p.y, ox: x, oy: y };
+        }
+        if (titik.size < 2) jarakAwal = 0;
+      };
+      area.addEventListener('pointerup', lepas);
+      area.addEventListener('pointercancel', lepas);
+      area.addEventListener('wheel', e => {
+        e.preventDefault();
+        const rect = area.getBoundingClientRect();
+        aturZoom(skala * (e.deltaY < 0 ? 1.08 : 1 / 1.08), e.clientX - rect.left, e.clientY - rect.top);
+      }, { passive: false });
+      geser.addEventListener('input', () => aturZoom(dasar * parseFloat(geser.value)));
+
+      const tutup = hasil => {
+        document.removeEventListener('keydown', tombolEsc);
+        latar.remove();
+        URL.revokeObjectURL(url);
+        resolve(hasil);
+      };
+      const tombolEsc = e => { if (e.key === 'Escape') tutup(null); };
+      document.addEventListener('keydown', tombolEsc);
+      latar.addEventListener('click', e => { if (e.target === latar) tutup(null); });
+      latar.querySelector('[data-batal-foto]').addEventListener('click', () => tutup(null));
+      latar.querySelector('[data-simpan-foto]').addEventListener('click', () => {
+        const c = document.createElement('canvas');
+        c.width = c.height = UKURAN_FOTO_PROFIL;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.imageSmoothingQuality = 'high';
+        // Bagian foto yang terlihat di bingkai, dipetakan ke kanvas persegi
+        ctx.drawImage(img, -x / skala, -y / skala, F / skala, F / skala, 0, 0, c.width, c.height);
+        tutup(c.toDataURL('image/jpeg', 0.9));
+      });
+      latar.querySelector('[data-simpan-foto]').focus();
+    };
+    img.src = url;
+  });
+}
+
 document.addEventListener('change', async e => {
   if (!e.target.matches('#fotoProfil')) return;
   const file = e.target.files && e.target.files[0];
   e.target.value = '';
   if (!file) return;
+  let dataUrl = null;
+  try {
+    dataUrl = await bukaAturFoto(file);
+  } catch (err) {
+    toast(err.message, 'err');
+    return;
+  }
+  if (!dataUrl) return; // dibatalkan
   const tombol = document.querySelector('[data-ganti-foto]');
   if (tombol) tombol.disabled = true;
   try {
-    const dataUrl = await kompresFoto(file);
     const hasil = await panggil('gantiFotoProfil', S.token, dataUrl);
     S.user.fotoUrl = hasil.fotoUrl;
     renderShell();
