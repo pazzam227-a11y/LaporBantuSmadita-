@@ -239,6 +239,59 @@ details.faq p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.6}
 .timer-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);margin-top:4px}
 .timer{font-size:17px;font-weight:800;color:var(--pink-600);font-variant-numeric:tabular-nums;letter-spacing:.02em}
 .form-selesai{display:grid;gap:12px;margin-top:6px}
+/* Detail laporan siswa */
+.det{display:grid;gap:14px;margin-top:4px}
+.det-head{display:flex;align-items:center;gap:12px}
+.det-head small{display:block;font-size:12px;font-weight:700;color:var(--muted)}
+.det-head b{display:block;font-size:18px;font-weight:800}
+.kembali{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:var(--ink)}
+.det-kartu{padding:18px;border-radius:20px}
+.det-h{margin:0 0 12px;font-size:15px;font-weight:800}
+.det-desk{margin:12px 0 0;font-size:16px;font-weight:800;line-height:1.4}
+.det-fotos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.det-fotos figure{margin:0}
+.det-foto{height:130px;border-radius:14px;overflow:hidden;background:var(--pink-200);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.det-foto.sesudah{background:var(--ok-bg);color:var(--ok)}
+.det-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.det-fotos figcaption{font-size:12px;font-weight:700;color:var(--muted);margin-top:6px}
+.det-fotos figcaption.hijau{color:var(--ok)}
+.lini{list-style:none;margin:0;padding:0;position:relative}
+.lini::before{content:"";position:absolute;left:10px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.lini li{position:relative;display:flex;gap:12px;padding-bottom:14px}
+.lini li:last-child{padding-bottom:0}
+.lini-dot{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.lini li.ok .lini-dot{background:var(--pink-600);border-color:var(--pink-600);color:#fff}
+.lini li.ok.akhir .lini-dot{background:var(--ok);border-color:var(--ok)}
+.lini li.jalan .lini-dot{border-color:var(--pink-600)}
+.lini-dot .ico{width:11px;height:11px}
+.lini b{display:block;font-size:14px}
+.lini small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.det-catatan{background:var(--pink-100)}
+.det-catatan p{margin:0;font-size:14px;line-height:1.6;white-space:pre-line}
+.det-dua{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.det-stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}
+.det-stat small{display:block;font-size:12px;color:var(--muted);font-weight:700}
+.det-stat b{display:block;font-size:14px;margin-top:4px}
+/* Proses perbaikan admin */
+.tahap{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tahap li{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;color:var(--muted)}
+.tahap-no{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+.tahap li.aktif{color:var(--ink)}
+.tahap li.aktif .tahap-no{border-color:var(--pink-600);color:var(--pink-600)}
+.tahap li.ok{color:var(--ok)}
+.tahap li.ok .tahap-no{background:var(--ok);border-color:var(--ok);color:#fff}
+.desk-label{display:block;font-size:13px;font-weight:800}
+.desk-selesai{display:block;width:100%;box-sizing:border-box;margin-top:6px;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit;font-size:14px;line-height:1.5;background:#fff;resize:vertical;min-height:88px}
+.hitung-baris{display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:600;color:var(--muted);margin-top:-4px}
+.hitung-desk{font-weight:700}
+.proses-wrap{display:grid;gap:16px}
+.proses-lain-daftar{display:grid;gap:8px}
+.baris-lain{display:flex;gap:12px;align-items:center;width:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:left;cursor:pointer;transition:.2s}
+.baris-lain:hover{border-color:var(--pink-400)}
+.baris-lain-teks{flex:1;min-width:0;display:grid;gap:2px}
+.baris-lain-teks b{font-size:14px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.baris-lain-teks small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.thumb-baris{width:52px;height:52px;border-radius:12px;object-fit:cover;flex-shrink:0;background:var(--pink-200);display:flex;align-items:center;justify-content:center}
 .wajib{font-size:11px;font-weight:800;color:var(--err);background:#ffe0e6;padding:2px 8px;border-radius:999px;margin-left:6px}
 .hist{display:grid;grid-template-columns:150px 1fr 190px;gap:18px;align-items:center;padding:16px}
 .hthumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;background:var(--pink-100);display:block}
@@ -513,7 +566,8 @@ function aksiDukung(r) {
   return `<button type="button" class="btn ghost sm" data-dukung="${esc(r.id)}">${ikon('thumbs')} Dukung</button>`;
 }
 
-function kartuLaporan(r) {
+function kartuLaporan(r, opsi) {
+  const aksiTambahan = (opsi && opsi.aksi) || ''; // opsi berupa objek; nilai lain (mis. indeks dari map) diabaikan
   const foto = r.fotoUrl
     ? `<img class="thumb" src="${esc(r.fotoUrl)}" alt="Foto laporan" loading="lazy">`
     : `<div class="thumb ph">${ikon('camera')} </div>`;
@@ -532,7 +586,7 @@ function kartuLaporan(r) {
         <span>${ikon('clock')} ${tgl(r.createdAt)}</span>
         <span>${ikon('thumbs')} ${r.dukungan} dukungan</span>
       </div>
-      <div class="side-act">${aksiDukung(r)}</div>
+      <div class="side-act">${aksiDukung(r)}${aksiTambahan}</div>
     </div>
   </article>`;
 }
@@ -734,7 +788,97 @@ async function pageLaporan() {
     return kosongBox(ikon('inbox'), 'Belum ada laporan', 'Laporan yang kamu buat akan tampil di sini beserta status perbaikannya.',
       `<button type="button" class="btn" data-go="lapor">${ikon('camera')} Buat Laporan</button>`);
   }
-  return `<div class="reports stagger">${list.map(kartuLaporan).join('')}</div>`;
+  const dipilih = S.laporanDetail && list.find(r => r.id === S.laporanDetail);
+  if (dipilih) return detailLaporanSaya(dipilih);
+  return `<div class="reports stagger">${list.map(r => kartuLaporan(r, {
+    aksi: `<button type="button" class="btn ghost" data-detail-laporan="${esc(r.id)}">Lihat detail</button>`
+  })).join('')}</div>`;
+}
+
+/** Detail laporan siswa: foto sebelum dan sesudah, perjalanan laporan, dan catatan perbaikan dari petugas */
+function detailLaporanSaya(r) {
+  const selesai = r.status === 'selesai';
+  const sudahDiverifikasi = r.status !== 'menunggu';
+  const durasi = selesai && r.startedAt && r.doneAt ? durasiTeks(new Date(r.doneAt) - new Date(r.startedAt)) : '-';
+  const tahap = [
+    { judul: 'Dilaporkan', info: tgl(r.createdAt), kondisi: 'ok' },
+    sudahDiverifikasi
+      ? { judul: 'Diverifikasi', info: tgl(r.startedAt), kondisi: 'ok' }
+      : { judul: 'Diverifikasi', info: 'Menunggu pemeriksaan petugas', kondisi: 'jalan' },
+    selesai
+      ? { judul: 'Sudah diperbaiki', info: durasi !== '-' ? 'Dikerjakan ' + durasi : 'Perbaikan selesai', kondisi: 'ok' }
+      : sudahDiverifikasi
+        ? { judul: 'Sedang diperbaiki', info: 'Sedang dikerjakan petugas', kondisi: 'jalan' }
+        : { judul: 'Sedang diperbaiki', info: 'Belum dimulai', kondisi: '' },
+    selesai
+      ? { judul: 'Selesai', info: tgl(r.doneAt), kondisi: 'ok akhir' }
+      : { judul: 'Selesai', info: 'Belum selesai', kondisi: '' }
+  ];
+  const lini = tahap.map(t => `
+      <li class="${t.kondisi}">
+        <span class="lini-dot" aria-hidden="true">${t.kondisi.indexOf('ok') >= 0 ? ikon('check') : ''}</span>
+        <div><b>${esc(t.judul)}</b><small>${esc(t.info)}</small></div>
+      </li>`).join('');
+  const fotoAwal = r.fotoUrl
+    ? `<img src="${esc(r.fotoUrl)}" alt="Foto saat dilaporkan" loading="lazy">`
+    : ikon('camera');
+  const fotoAkhir = r.buktiUrl
+    ? `<img src="${esc(r.buktiUrl)}" alt="Foto setelah diperbaiki" loading="lazy">`
+    : ikon('wrench');
+  const catatan = selesai ? `
+    <section class="card det-kartu det-catatan">
+      <h3 class="det-h">Catatan perbaikan</h3>
+      <p>${r.deskripsiPerbaikan ? esc(r.deskripsiPerbaikan) : 'Petugas belum menulis catatan untuk perbaikan ini.'}</p>
+      <small class="muted" style="display:block;margin-top:10px">Ditulis oleh petugas sekolah</small>
+    </section>` : '';
+  return `
+  <div class="det anim-in">
+    <div class="det-head">
+      <button type="button" class="kembali" data-laporan-kembali aria-label="Kembali ke daftar laporan">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div><small>Laporan Saya</small><b>Detail laporan</b></div>
+    </div>
+
+    <section class="card det-kartu">
+      <div class="tags">
+        <span class="tag">${esc(r.kategori)}</span>
+        <span class="tag">${ikon('pin')} ${esc(r.lokasi)}</span>
+        <span class="tag ${PRIO_CLS[r.prioritas] || ''}">${esc(r.prioritas)}</span>
+      </div>
+      <p class="det-desk">${esc(r.deskripsi)}</p>
+      <div class="meta">
+        ${statusPill(r.status)}
+        <span>${ikon('clock')} ${tgl(r.createdAt)}</span>
+      </div>
+    </section>
+
+    <section class="card det-kartu">
+      <h3 class="det-h">Foto sebelum dan sesudah</h3>
+      <div class="det-fotos">
+        <figure>
+          <div class="det-foto">${fotoAwal}</div>
+          <figcaption>Saat dilaporkan</figcaption>
+        </figure>
+        <figure>
+          <div class="det-foto sesudah">${fotoAkhir}</div>
+          <figcaption class="${r.buktiUrl ? 'hijau' : ''}">${r.buktiUrl ? 'Setelah diperbaiki' : 'Belum ada foto perbaikan'}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card det-kartu">
+      <h3 class="det-h">Perjalanan laporan</h3>
+      <ol class="lini">${lini}</ol>
+    </section>
+
+    ${catatan}
+
+    <div class="det-dua">
+      <div class="det-stat"><small>Poin</small><b>${selesai ? 'Sudah masuk ke akunmu' : 'Didapat setelah selesai'}</b></div>
+      <div class="det-stat"><small>Dukungan</small><b>${r.dukungan} siswa mendukung</b></div>
+    </div>
+  </div>`;
 }
 
 /* ---------- Peta Masalah ---------- */
@@ -1099,24 +1243,89 @@ async function pageProses() {
   const list = await panggil('prosesList', S.token);
   if (!list.length) {
     return kosongBox(ikon('wrench'), 'Belum ada perbaikan berjalan',
-      'Laporan yang sudah diverifikasi akan tampil di sini. Foto bukti wajib diunggah sebelum ditandai selesai.');
+      'Laporan yang sudah diverifikasi akan tampil di sini. Foto bukti dan deskripsi perbaikan wajib diisi sebelum ditandai selesai.');
   }
-  return `<div class="reports stagger">${list.map(r => kartuAdmin(r, aksiSelesai(r))).join('')}</div>`;
+  const aktif = list.find(r => r.id === S.prosesId) || list[0];
+  const lain = list.filter(r => r.id !== aktif.id);
+  return `
+  <div class="proses-wrap anim-in">
+    ${kartuProsesAktif(aktif)}
+    ${lain.length ? `
+    <section class="card det-kartu">
+      <h3 class="det-h">Lainnya yang sedang diproses</h3>
+      <div class="proses-lain-daftar">${lain.map(barisProses).join('')}</div>
+    </section>` : ''}
+  </div>`;
 }
 
-function aksiSelesai(r) {
+/** Laporan yang sedang dikerjakan: tiga langkah, foto bukti, dan deskripsi perbaikan */
+function kartuProsesAktif(r) {
+  const id = esc(r.id);
+  const bukti = BUKTI.get(r.id);
+  const pratinjau = bukti
+    ? `<img class="prev" src="${esc(bukti)}" alt="Pratinjau bukti"><small class="ganti">Ketuk untuk ganti foto</small>`
+    : `${ikon('camera')} Unggah foto bukti perbaikan <span class="wajib">wajib</span>`;
   return `
-    <div class="meta">
-      <span class="status st-diproses">Diperbaiki oleh ${esc(r.verifikator || '-')}</span>
+  <article class="card report anim-in">
+    ${fotoKecil(r.fotoUrl)}
+    <div class="rbody">
+      <div class="tags">
+        <span class="tag">${esc(r.kategori)}</span>
+        <span class="tag">${ikon('pin')} ${esc(r.lokasi)}</span>
+        <span class="tag ${PRIO_CLS[r.prioritas] || ''}">${esc(r.prioritas)}</span>
+      </div>
+      <p class="desk">${esc(r.deskripsi)}</p>
+      <div class="meta">
+        <span>${ikon('user')} ${esc(r.pelapor)} · ${esc(r.kelasPelapor)}</span>
+        <span class="status st-diproses">Diperbaiki oleh ${esc(r.verifikator || '-')}</span>
+      </div>
+      <div class="timer-row">${ikon('timer')} Sudah berjalan <b class="timer" data-mulai="${esc(r.startedAt)}">--:--:--</b></div>
+      <form class="form-selesai" data-aksi="selesai" data-id="${id}" autocomplete="off">
+        <ol class="tahap" aria-label="Langkah penyelesaian">
+          <li class="${bukti ? 'ok' : 'aktif'}"><span class="tahap-no">1</span>Foto bukti</li>
+          <li class="${bukti ? 'aktif' : ''}"><span class="tahap-no">2</span>Deskripsi</li>
+          <li><span class="tahap-no">3</span>Tandai selesai</li>
+        </ol>
+        <label class="upload">
+          <input type="file" accept="image/jpeg,image/png,image/webp" class="bukti" required>
+          <div class="up-txt">${pratinjau}</div>
+        </label>
+        <label class="desk-label" for="desk-${id}">Deskripsi perbaikan <span class="wajib">wajib</span></label>
+        <textarea id="desk-${id}" name="deskripsi" class="desk-selesai" rows="3" maxlength="300" required placeholder="Contoh: Lampu diganti dan stop kontak diperiksa."></textarea>
+        <div class="hitung-baris"><span>Teks ini tampil ke pelapor</span><span class="hitung-desk">0/300</span></div>
+        <button type="submit" class="btn block">${ikon('check')} Tandai Selesai</button>
+      </form>
     </div>
-    <div class="timer-row">${ikon('timer')} Sudah berjalan <b class="timer" data-mulai="${esc(r.startedAt)}">--:--:--</b></div>
-    <form class="form-selesai" data-aksi="selesai" data-id="${esc(r.id)}" autocomplete="off">
-      <label class="upload">
-        <input type="file" accept="image/jpeg,image/png,image/webp" class="bukti" required>
-        <div class="up-txt">${ikon('camera')} Unggah foto bukti perbaikan <span class="wajib">wajib</span></div>
-      </label>
-      <button type="submit" class="btn block">${ikon('check')} Tandai Selesai</button>
-    </form>`;
+  </article>`;
+}
+
+/** Baris ringkas laporan lain yang sedang diproses; ketuk untuk membukanya */
+function barisProses(r) {
+  const thumb = r.fotoUrl
+    ? `<img class="thumb-baris" src="${esc(r.fotoUrl)}" alt="Foto laporan" loading="lazy">`
+    : `<span class="thumb-baris">${ikon('camera')}</span>`;
+  return `
+  <button type="button" class="baris-lain" data-pilih-proses="${esc(r.id)}">
+    ${thumb}
+    <span class="baris-lain-teks">
+      <b>${esc(r.lokasi)} · ${esc(r.kategori)}</b>
+      <small>${esc(r.pelapor)} · ${esc(r.kelasPelapor)}</small>
+    </span>
+    <b class="timer" data-mulai="${esc(r.startedAt)}">--:--:--</b>
+  </button>`;
+}
+
+/** Menyesuaikan stepper dan penghitung deskripsi setiap kali foto atau teks berubah */
+function segarTahapProses(form) {
+  if (!form) return;
+  const ada = BUKTI.has(form.dataset.id);
+  const teks = form.elements.deskripsi.value;
+  const desk = teks.trim().length > 0;
+  const langkah = form.querySelectorAll('.tahap li');
+  langkah[0].className = ada ? 'ok' : 'aktif';
+  langkah[1].className = ada ? (desk ? 'ok' : 'aktif') : '';
+  langkah[2].className = ada && desk ? 'aktif' : '';
+  form.querySelector('.hitung-desk').textContent = teks.length + '/300';
 }
 
 /** Dipanggil dari Client saat form selesai dikirim */
@@ -1124,8 +1333,11 @@ async function selesaikanLaporan(f) {
   const id = f.dataset.id;
   const bukti = BUKTI.get(id);
   if (!bukti) throw new Error('Pilih foto bukti perbaikan terlebih dahulu.');
-  await panggil('selesaikan', S.token, id, bukti);
+  const deskripsi = f.elements.deskripsi.value.trim();
+  if (!deskripsi) throw new Error('Tulis deskripsi perbaikan terlebih dahulu.');
+  await panggil('selesaikan', S.token, id, bukti, deskripsi);
   BUKTI.delete(id);
+  S.prosesId = '';
   toast('Laporan ditandai selesai. Pelapor mendapat poin', 'ok');
   karakterTanggapi('selesai');
   renderPage();
@@ -1184,10 +1396,11 @@ document.addEventListener('change', async e => {
   if (t.classList.contains('bukti')) {
     const form = t.closest('form');
     const file = t.files[0];
-    if (!file) { BUKTI.delete(form.dataset.id); return; }
+    if (!file) { BUKTI.delete(form.dataset.id); segarTahapProses(form); return; }
     try {
       const url = await kompresFoto(file);
       BUKTI.set(form.dataset.id, url);
+      segarTahapProses(form);
       t.closest('label').querySelector('.up-txt').innerHTML =
         `<img class="prev" src="${url}" alt="Pratinjau bukti"><small class="ganti">Ketuk untuk ganti foto</small>`;
     } catch (err) {
@@ -2306,7 +2519,8 @@ function hapusToken() {
 const S = {
   token: ambilToken(), user: null, adaAdmin: true,
   halaman: 'beranda', tab: 'siswa', mode: 'masuk',
-  reqId: 0, notifBelum: 0, antrian: 0, fotoData: '', timer: null
+  reqId: 0, notifBelum: 0, antrian: 0, fotoData: '', timer: null,
+  laporanDetail: '', prosesId: ''
 };
 const $ = sel => document.querySelector(sel);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -2641,6 +2855,11 @@ document.addEventListener('input', e => {
   if (e.target.id === 'lDesk') $('#lCount').textContent = e.target.value.length;
 });
 
+/* Stepper dan penghitung deskripsi perbaikan di Proses Perbaikan admin */
+document.addEventListener('input', e => {
+  if (e.target.classList.contains('desk-selesai')) segarTahapProses(e.target.form);
+});
+
 document.addEventListener('click', e => {
   if (e.target.closest('[data-info-login]')) { bukaInfo(); return; }
   if (e.target.closest('[data-tutup-info]') || e.target.id === 'infoOverlay') { tutupInfo(); return; }
@@ -2649,6 +2868,12 @@ document.addEventListener('click', e => {
 
   const mode = e.target.closest('[data-mode]');
   if (mode) { S.mode = mode.dataset.mode; renderAuth(); return; }
+
+  const lihat = e.target.closest('[data-detail-laporan]');
+  if (lihat) { S.laporanDetail = lihat.dataset.detailLaporan; renderPage(); return; }
+  if (e.target.closest('[data-laporan-kembali]')) { S.laporanDetail = ''; renderPage(); return; }
+  const pilihProses = e.target.closest('[data-pilih-proses]');
+  if (pilihProses) { S.prosesId = pilihProses.dataset.pilihProses; renderPage(); return; }
 
   const go = e.target.closest('[data-go]');
   if (go) {
@@ -2659,6 +2884,7 @@ document.addEventListener('click', e => {
       return;
     }
     S.halaman = id;
+    S.laporanDetail = '';
     renderShell();
     renderPage();
     return;
